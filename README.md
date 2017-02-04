@@ -8,6 +8,6 @@ This dokuwiki plugin is developed to do Chinese character replacement to its "ca
 To override automatic character replacement, wrap the character with <nochinesecanonical></nochinesecanonical> tags. The tag is a crude hack and prone to bugs, to prevent any problem only wrap the actual character not to be replaced.
 
 Example:
-<nochinesecanonical>真</nochinesecanonical>真
+&lt;nochinesecanonical&gt;真&lt;/nochinesecanonical&gt;真
 
 The first 真 will not be replaced while the second 真 will be replaced with 眞

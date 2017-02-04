@@ -7,8 +7,12 @@ class syntax_plugin_canonicalchinese extends DokuWiki_Syntax_Plugin {
     return "substition";
   }
   
+  function getAllowedTypes() {
+    return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs');
+  }
+  
   function getSort() {
-    return 159;
+    return 19;
   }
   function connectTo($mode) {
     $this->Lexer->addEntryPattern('\<nochinesecanonical\>(?=.*?\<\/nochinesecanonical\>)',$mode, 'plugin_canonicalchinese');

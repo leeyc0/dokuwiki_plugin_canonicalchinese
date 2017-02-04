@@ -1,0 +1,6 @@
+base canonicalchinese
+author leeyc0
+date 2017-02-04
+name canonicalchinese
+desc Chinese character canonical form replacement replacement
+url https://github.com/leeyc0/dokuwiki_plugin_canonicalchinese

@@ -14,10 +14,12 @@ class syntax_plugin_canonicalchinese extends DokuWiki_Syntax_Plugin {
   function getSort() {
     return 19;
   }
+  
   function connectTo($mode) {
     $this->Lexer->addEntryPattern('\<nochinesecanonical\>(?=.*?\<\/nochinesecanonical\>)',$mode, 'plugin_canonicalchinese');
     $this->Lexer->addExitPattern('\<\/nochinesecanonical\>','plugin_canonicalchinese');
   }
+  
   function handle($match, $state, $pos, Doku_Handler $handler) {
     if ($state == DOKU_LEXER_ENTER || $state == DOKU_LEXER_EXIT) {
       return '';
@@ -25,6 +27,7 @@ class syntax_plugin_canonicalchinese extends DokuWiki_Syntax_Plugin {
       return $match;
     }
   }
+  
   function render($mode, Doku_Renderer $R, $data) {
     $R->doc .= $data;
   }

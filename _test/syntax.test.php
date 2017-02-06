@@ -12,8 +12,8 @@ class plugin_canonicalchinese_syntax_test extends DokuWikiTest {
 
    public function test_nocanonicalchinese_tag() {
      $info = array();
-     $instructions = p_get_instructions('十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書');
-     $expected_output = "\n<p>\n十萬個為甚麼真的是科學敎育的好書\n</p>\n";
+     $instructions = p_get_instructions('十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書 真眞<nochinesecanonical>科學教育</nochinesecanonical>的好書');
+     $expected_output = "\n<p>\n十萬個為甚麼真的是科學敎育的好書 真眞科學教育的好書\n</p>\n";
      $xhtml = p_render('xhtml', $instructions, $info);
      $this->assertEquals($expected_output, $xhtml);
   }

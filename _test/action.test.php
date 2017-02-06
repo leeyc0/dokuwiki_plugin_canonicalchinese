@@ -12,9 +12,9 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
 
    public function test_canonicalchinese_replace() {
      global $conf;
-     $data[] = array("", '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書');
-     $expected_output_enabled = '十萬個爲甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書';
-     $expected_output_disabled = '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書';
+     $data[] = array("", '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育</nochinesecanonical>的好書');
+     $expected_output_enabled = '十萬個爲甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書 眞眞<nochinesecanonical>科學教育</nochinesecanonical>的好書';
+     $expected_output_disabled = '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育</nochinesecanonical>的好書';
      $event = new Doku_Event("IO_WIKIPAGE_WRITE", $data);
      $action_class = new action_plugin_canonicalchinese();
 

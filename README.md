@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese.svg?branch=master)](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese)
+
 # TL;DR
 You don't need this dokuwiki plugin.
 

@@ -34,7 +34,8 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
      $event = new Doku_Event("IO_WIKIPAGE_WRITE", $data);
      $action_class = new action_plugin_canonicalchinese();
      $action_class->replace_canonical_chinese($event);
-     $this->assertEquals($expected_string, $data[0][1]);
+     $enabled_str = $enabled ? 'true' : 'false';
+     $this->assertEquals($expected_string, $data[0][1], "convert to canonical form: $enabled_str");
   }
 }
 ?>

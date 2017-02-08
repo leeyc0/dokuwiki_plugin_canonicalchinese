@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese.svg?branch=master)](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese)
+[![Build Status](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese.svg?branch=master)](https://travis-ci.org/leeyc0/dokuwiki_plugin_canonicalchinese) [![codecov](https://codecov.io/gh/leeyc0/dokuwiki_plugin_canonicalchinese/branch/master/graph/badge.svg)](https://codecov.io/gh/leeyc0/dokuwiki_plugin_canonicalchinese)
+
 
 # TL;DR
 You don't need this dokuwiki plugin.

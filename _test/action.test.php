@@ -10,6 +10,15 @@
 class plugin_canonicalchinese_action_test extends DokuWikiTest {
   protected $pluginsEnabled = array('canonicalchinese');
 
+  public function test_event_handler() {
+    global $conf;
+    $conf['plugin']['canonicalchinese']['enabled'] = true;
+    $input_string = "真裡洩為教";
+    $expected_string = "眞裏泄爲敎";
+    $event_data = array(array("fake_path", $input_string, false), false, "fake_page", false);
+    trigger_event("IO_WIKIPAGE_WRITE", $event_data);
+    $this->assertEquals($expected_string, $event_data[0][1], "characters should convert to canonical form upon saving");
+  }
 
   public function canonicalchinese_replace_provider()
   {
@@ -44,7 +53,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
     $event = new Doku_Event("IO_WIKIPAGE_WRITE", $data);
     $action_class = new action_plugin_canonicalchinese();
     $action_class->replace_canonical_chinese($event);
-    $enabled_str = $enabled ? 'true' : 'false';
+    $enabled_str = $enabled ? 'enabled' : 'disabled';
     $this->assertEquals($expected_string, $data[0][1], "convert to canonical form: $enabled_str");
   }
 }

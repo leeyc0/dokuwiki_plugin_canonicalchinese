@@ -1,3 +1,3 @@
 <?php
-$conf['enabled'] = 0;
+$conf['enabled'] = false;
 ?>

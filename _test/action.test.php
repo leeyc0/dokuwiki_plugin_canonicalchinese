@@ -10,6 +10,15 @@
 class plugin_canonicalchinese_action_test extends DokuWikiTest {
   protected $pluginsEnabled = array('canonicalchinese');
 
+  public function test_default_config() {
+    $action_class = new action_plugin_canonicalchinese();
+    $this->assertFalse($action_class->getConf('enabled'), "plugin should be disabled by default");
+    $action_class_reflection = new ReflectionClass('action_plugin_canonicalchinese');
+    $dictionary = $action_class_reflection->getProperty("dictionary");
+    $dictionary->setAccessible(true);
+    $this->assertEquals(5, sizeof($dictionary->getValue($action_class)));
+  }
+
   public function test_event_handler() {
     global $conf;
     $conf['plugin']['canonicalchinese']['enabled'] = true;
@@ -23,11 +32,6 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
   public function canonicalchinese_replace_provider()
   {
     return array(
-      array(true, "真", "眞"),
-      array(true, "裡", "裏"),
-      array(true, "洩", "泄"),
-      array(true, "為", "爲"),
-      array(true, "教", "敎"),
       array(true,
         '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育</nochinesecanonical>的好書',
         '十萬個爲甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書 眞眞<nochinesecanonical>科學教育</nochinesecanonical>的好書'
@@ -37,7 +41,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
         '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育</nochinesecanonical>的好書'
       ),
       array(true,
-       '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育 教育的好書',
+        '十萬個為甚麼<nochinesecanonical>真</nochinesecanonical>的是科學教育的好書 真眞<nochinesecanonical>科學教育 教育的好書',
         '十萬個爲甚麼<nochinesecanonical>真</nochinesecanonical>的是科學敎育的好書 眞眞<nochinesecanonical>科學教育 教育的好書'
       )
     );

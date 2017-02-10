@@ -15,7 +15,6 @@ before_install: wget https://raw.github.com/splitbrain/dokuwiki-travis/master/tr
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
-  - pecl install mbstring
 install: sh travis.sh && mv lib/plugins/canonicalchinese/phpunit.xml _test/
 script: cd _test && phpunit --stderr --group plugin_canonicalchinese --coverage-clover=coverage.xml
 after_success: mv coverage.xml ../lib/plugins/canonicalchinese && cd ../lib/plugins/canonicalchinese && bash <(curl -s https://codecov.io/bash)

@@ -16,7 +16,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
     $action_class_reflection = new ReflectionClass('action_plugin_canonicalchinese');
     $dictionary = $action_class_reflection->getProperty("dictionary");
     $dictionary->setAccessible(true);
-    $this->assertEquals(5, sizeof($dictionary->getValue($action_class)));
+    $this->assertEquals(5, sizeof($dictionary->getValue($action_class)), "check dict size to make sure we did not forget to modify test cases for any dict changes");
   }
 
   public function test_event_handler() {

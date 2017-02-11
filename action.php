@@ -5,15 +5,16 @@ if(!defined('DOKU_INC')) die();
 require_once(DOKU_PLUGIN.'action.php');
 
 class action_plugin_canonicalchinese extends DokuWiki_Action_Plugin {
-  private $dictionary = array();
+  private static $dictionary = array();
   
-  function __construct() {
+  static function init_dictionary() {
     // the first is canonical form, the second is common form
-    $this->dictionary[] = array("眞", "真");
-    $this->dictionary[] = array("裏", "裡");
-    $this->dictionary[] = array("泄", "洩");
-    $this->dictionary[] = array("爲", "為");
-    $this->dictionary[] = array("敎", "教");
+    array_push(self::$dictionary, array("眞", "真"),
+                                 array("裏", "裡"),
+                                 array("泄", "洩"),
+                                 array("爲", "為"),
+                                 array("敎", "教")
+              );
   }
   
   function register(Doku_Event_Handler $controller) {
@@ -40,7 +41,7 @@ class action_plugin_canonicalchinese extends DokuWiki_Action_Plugin {
         } else {
           $tmpstr = substr($str,$offset,$offset2-$offset);
         }
-        foreach ($this->dictionary as $pair) {
+        foreach (self::$dictionary as $pair) {
           $regex = "/".preg_quote($pair[1], "/")."/ms";
           $tmpstr = preg_replace($regex, $pair[0], $tmpstr, -1);
         }
@@ -64,5 +65,7 @@ class action_plugin_canonicalchinese extends DokuWiki_Action_Plugin {
     $event->data[0][1] = $outputstr;
   }
 }
+
+action_plugin_canonicalchinese::init_dictionary();
 
 ?>

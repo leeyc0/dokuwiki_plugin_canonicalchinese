@@ -23,7 +23,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
     $conf['plugin']['canonicalchinese']['enabled'] = true;
     $input_string = "真裡洩為教";
     $expected_string = "眞裏泄爲敎";
-    $this->assertEquals(mb_strlen($input_string), sizeof($dictionary->getValue(new action_plugin_canonicalchinese())), "make sure we did not forget to modify test cases for any dict changes");
+    $this->assertEquals(mb_strlen($input_string), sizeof($dictionary->getValue()), "make sure we did not forget to modify test cases for any dict changes");
     $event_data = array(array("fake_path", $input_string, false), false, "fake_page", false);
     trigger_event("IO_WIKIPAGE_WRITE", $event_data);
     $this->assertEquals($expected_string, $event_data[0][1], "characters should convert to canonical form upon saving");

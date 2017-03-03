@@ -17,7 +17,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
 
   public function test_event_handler() {
     if (!function_exists('mb_strlen')) {
-      $this->markTestIncomplete('extension mbstring is needed to run this test');
+      $this->markTestSkipped('extension mbstring is needed to run this test');
     }
     $action_class_reflection = new ReflectionClass('action_plugin_canonicalchinese');
     $dictionary = $action_class_reflection->getProperty("dictionary");

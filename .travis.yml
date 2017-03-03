@@ -19,5 +19,5 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
 install: sh travis.sh
-script: cd _test && phpunit --stderr --coverage-clover=coverage.xml -c "../$PROJECT_ROOT/_test/phpunit.xml"
+script: cd _test && phpunit --stderr --coverage-clover=coverage.xml -v -c "../$PROJECT_ROOT/_test/phpunit.xml"
 after_success: curl -s https://codecov.io/bash | bash -s -- -R "../$PROJECT_ROOT" -s .

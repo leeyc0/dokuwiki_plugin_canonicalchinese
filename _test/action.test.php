@@ -25,9 +25,9 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
     $dictionary->setAccessible(true);
     global $conf;
     $conf['plugin']['canonicalchinese']['enabled'] = true;
-    $input_string = "真裡洩為教";
-    $expected_string = "眞裏泄爲敎";
-    $this->assertEquals(mb_strlen($input_string), sizeof($dictionary->getValue()), "make sure we did not forget to modify test cases for any dict changes");
+    $input_string = "真裡洩為教填偽舉唇床卧却匆查";
+    $expected_string = "眞裏泄爲敎塡僞擧脣牀臥卻怱査";
+    $this->assertEquals(mb_strlen($input_string), sizeof($dictionary->getValue()), "The test case does not cover all possible replacement characters");
     $event_data = array(array("fake_path", $input_string, false), false, "fake_page", false);
     trigger_event("IO_WIKIPAGE_WRITE", $event_data);
     $this->assertEquals($expected_string, $event_data[0][1], "characters should convert to canonical form upon saving");

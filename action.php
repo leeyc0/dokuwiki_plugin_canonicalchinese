@@ -10,10 +10,19 @@ class action_plugin_canonicalchinese extends DokuWiki_Action_Plugin {
   static function init_dictionary() {
     // the first is canonical form, the second is common form
     array_push(self::$dictionary, array("眞", "真"),
-                                 array("裏", "裡"),
-                                 array("泄", "洩"),
-                                 array("爲", "為"),
-                                 array("敎", "教")
+                                  array("裏", "裡"),
+                                  array("泄", "洩"),
+                                  array("爲", "為"),
+                                  array("敎", "教"),
+                                  array("塡", "填"),
+                                  array("僞", "偽"),
+                                  array("擧", "舉"),
+                                  array("脣", "唇"),
+                                  array("牀", "床"),
+                                  array("臥", "卧"),
+                                  array("卻", "却"),
+                                  array("怱", "匆"),
+                                  array("査", "查")
               );
   }
   

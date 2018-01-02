@@ -5,9 +5,6 @@ php:
   - "7.1"
   - "7.0"
   - "5.6"
-  - "5.5"
-  - "5.4"
-  - "5.3"
 env:
   global:
     - PROJECT_ROOT=lib/plugins/canonicalchinese
@@ -18,6 +15,9 @@ before_install: wget https://raw.github.com/splitbrain/dokuwiki-travis/master/tr
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
-install: sh travis.sh
-script: cd _test && phpunit --stderr --coverage-clover=coverage.xml -v -c "../$PROJECT_ROOT/_test/phpunit.xml"
+install:
+ - sh travis.sh
+ - wget -O ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
+ - chmod 755 ~/.phpenv/versions/hhvm/bin/phpunit
+script: cd _test && ~/.phpenv/versions/hhvm/bin/phpunit --stderr --coverage-clover=coverage.xml -v -c "../$PROJECT_ROOT/_test/phpunit.xml"
 after_success: curl -s https://codecov.io/bash | bash -s -- -R "../$PROJECT_ROOT" -s .

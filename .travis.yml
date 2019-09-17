@@ -2,10 +2,9 @@
 
 language: php
 php:
+  - "7.3"
   - "7.2"
   - "7.1"
-  - "7.0"
-  - "5.6"
 env:
   global:
     - PROJECT_ROOT=lib/plugins/canonicalchinese
@@ -18,7 +17,7 @@ before_script:
   - travis_retry composer install --no-interaction --prefer-source --dev
 install:
  - sh travis.sh
- - wget -O ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
- - chmod 755 ~/.phpenv/versions/hhvm/bin/phpunit
+ #- wget -O ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
+ #- chmod 755 ~/.phpenv/versions/hhvm/bin/phpunit
 script: cd _test && ~/.phpenv/versions/hhvm/bin/phpunit --stderr --coverage-clover=coverage.xml -v -c "../$PROJECT_ROOT/_test/phpunit.xml"
 after_success: curl -s https://codecov.io/bash | bash -s -- -R "../$PROJECT_ROOT" -s .

@@ -1,8 +1,6 @@
 <?php
-
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
-require_once(DOKU_PLUGIN.'action.php');
 
 class action_plugin_canonicalchinese extends DokuWiki_Action_Plugin {
   private static $dictionary = array();

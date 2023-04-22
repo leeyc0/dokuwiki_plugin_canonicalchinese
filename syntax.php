@@ -1,6 +1,6 @@
 <?php
 if(!defined('DOKU_INC')) die();
-require_once(DOKU_PLUGIN.'syntax.php');
+
 class syntax_plugin_canonicalchinese extends DokuWiki_Syntax_Plugin {
   
   function getType() {

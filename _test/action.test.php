@@ -6,6 +6,7 @@
  * @group plugin_canonicalchinese
  * @group plugins
  */
+use dokuwiki\Extension\Event;
 
 class plugin_canonicalchinese_action_test extends DokuWikiTest {
   protected $pluginsEnabled = array('canonicalchinese');
@@ -29,7 +30,7 @@ class plugin_canonicalchinese_action_test extends DokuWikiTest {
     $expected_string = "眞裏泄爲敎塡僞擧脣牀臥卻怱査";
     $this->assertEquals(mb_strlen($input_string), sizeof($dictionary->getValue()), "The test case does not cover all possible replacement characters");
     $event_data = array(array("fake_path", $input_string, false), false, "fake_page", false);
-    trigger_event("IO_WIKIPAGE_WRITE", $event_data);
+    Event::createAndTrigger("IO_WIKIPAGE_WRITE", $event_data);
     $this->assertEquals($expected_string, $event_data[0][1], "characters should convert to canonical form upon saving");
   }
 
